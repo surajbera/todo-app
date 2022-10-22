@@ -28,22 +28,25 @@ function App() {
 	}
 
 	const todoToDelete = todo => {
-		console.log(todo)
+		const updatedTodos = todos.filter(todoItem => todoItem.id !== todo.id)
+		setTodos(updatedTodos)
 	}
 
 	return (
 		<div className='App flex-wrapper'>
-			<TodoForm addTodos={addTodos} />
-			<TodoList
-				todos={todos}
-				todoToEdit={todoToEdit}
-				todoToDelete={todoToDelete}
-			/>
-			<ToastContainer
-				autoClose={1300}
-				closeOnClick
-				theme='dark'
-			/>
+			<div className='todo-wrapper'>
+				<TodoForm addTodos={addTodos} />
+				<TodoList
+					todos={todos}
+					todoToEdit={todoToEdit}
+					todoToDelete={todoToDelete}
+				/>
+				<ToastContainer
+					autoClose={1300}
+					closeOnClick
+					theme='dark'
+				/>
+			</div>
 		</div>
 	)
 }
