@@ -3,11 +3,7 @@ import { TodoItem } from '../todo-item/TodoItem'
 /* styles */
 import './TodoList.css'
 
-export const TodoList = ({ todos, todoToBeEdited }) => {
-	const todoToEdit = todo => {
-		todoToBeEdited(todo)
-	}
-
+export const TodoList = ({ todos, todoToEdit, todoToDelete }) => {
 	return (
 		<ul className='todo-container'>
 			{todos.map(todo => (
@@ -15,6 +11,7 @@ export const TodoList = ({ todos, todoToBeEdited }) => {
 					key={todo.id}
 					todo={todo}
 					todoToEdit={todoToEdit}
+					todoToDelete={todoToDelete}
 				/>
 			))}
 		</ul>

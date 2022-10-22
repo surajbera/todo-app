@@ -17,12 +17,17 @@ function App() {
 		const index = todos.findIndex(item => item.todoText.toLowerCase() === newTodoItem.todoText.toLowerCase())
 		if (index === -1) {
 			setTodos(prevTodos => [newTodoItem, ...prevTodos])
+			toast.success('Todo added')
 		} else {
 			toast.error('Todo already added')
 		}
 	}
 
-	const todoToBeEdited = todo => {
+	const todoToEdit = todo => {
+		console.log(todo)
+	}
+
+	const todoToDelete = todo => {
 		console.log(todo)
 	}
 
@@ -31,9 +36,14 @@ function App() {
 			<TodoForm addTodos={addTodos} />
 			<TodoList
 				todos={todos}
-				todoToBeEdited={todoToBeEdited}
+				todoToEdit={todoToEdit}
+				todoToDelete={todoToDelete}
 			/>
-			<ToastContainer />
+			<ToastContainer
+				autoClose={1300}
+				closeOnClick
+				theme='dark'
+			/>
 		</div>
 	)
 }
