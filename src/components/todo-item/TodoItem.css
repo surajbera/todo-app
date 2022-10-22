@@ -1,7 +1,7 @@
 .todo-item {
 	background-color: var(--todo-list-bg-clr);
 	color: var(--todo-list-clr);
-	padding: 1.5rem 2rem;
+	padding: 1rem 1.5rem;
 	border-radius: 1rem;
 	justify-content: space-between;
 	align-items: center;

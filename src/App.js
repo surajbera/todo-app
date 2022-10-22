@@ -16,7 +16,7 @@ function App() {
 	const addTodos = newTodoItem => {
 		const index = todos.findIndex(item => item.todoText.toLowerCase() === newTodoItem.todoText.toLowerCase())
 		if (index === -1) {
-			setTodos(prevTodos => [...prevTodos, newTodoItem])
+			setTodos(prevTodos => [newTodoItem, ...prevTodos])
 		} else {
 			toast.error('Todo already added')
 		}
