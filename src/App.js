@@ -12,19 +12,19 @@ import './style.css'
 
 function App() {
 	const [todos, setTodos] = useState([])
+	const [todoToBeEdited, setTodoToBeEdited] = useState(null)
 
 	const addTodos = newTodoItem => {
 		const index = todos.findIndex(item => item.todoText.toLowerCase() === newTodoItem.todoText.toLowerCase())
 		if (index === -1) {
 			setTodos(prevTodos => [newTodoItem, ...prevTodos])
-			toast.success('Todo added')
 		} else {
 			toast.error('Todo already added')
 		}
 	}
 
 	const todoToEdit = todo => {
-		console.log(todo)
+		setTodoToBeEdited(todo)
 	}
 
 	const todoToDelete = todo => {
@@ -35,7 +35,10 @@ function App() {
 	return (
 		<div className='App flex-wrapper'>
 			<div className='todo-wrapper'>
-				<TodoForm addTodos={addTodos} />
+				<TodoForm
+					addTodos={addTodos}
+					todoToBeEdited={todoToBeEdited}
+				/>
 				<TodoList
 					todos={todos}
 					todoToEdit={todoToEdit}
@@ -45,6 +48,7 @@ function App() {
 					autoClose={1300}
 					closeOnClick
 					theme='dark'
+					position='bottom-right'
 				/>
 			</div>
 		</div>
