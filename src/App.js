@@ -22,10 +22,17 @@ function App() {
 		}
 	}
 
+	const todoToBeEdited = todo => {
+		console.log(todo)
+	}
+
 	return (
 		<div className='App flex-wrapper'>
 			<TodoForm addTodos={addTodos} />
-			<TodoList todos={todos} />
+			<TodoList
+				todos={todos}
+				todoToBeEdited={todoToBeEdited}
+			/>
 			<ToastContainer />
 		</div>
 	)
