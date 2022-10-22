@@ -25,7 +25,7 @@ export const TodoForm = ({ addTodos }) => {
 	return (
 		<div className='todo-form-wrapper'>
 			<form
-				className='todo-form'
+				className='todo-form flex-wrapper'
 				onSubmit={handleSubmitEvent}
 			>
 				<input

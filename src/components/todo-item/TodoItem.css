@@ -1,0 +1,30 @@
+.todo-item {
+	background-color: var(--todo-list-bg-clr);
+	color: var(--todo-list-clr);
+	padding: 1.5rem 2rem;
+	border-radius: 1rem;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 0 0.5rem;
+}
+.todo-text {
+	font-size: 1.6rem;
+	line-height: 2.2rem;
+	max-height: 4.4rem;
+	white-space: normal;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	-webkit-line-clamp: 2;
+}
+.todo-icon {
+	font-size: 2rem;
+}
+.todo-icon {
+	align-items: center;
+	cursor: pointer;
+}
+.todo-edit-icon {
+	margin: 0 1rem 0 0;
+}

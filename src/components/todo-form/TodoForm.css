@@ -1,8 +1,26 @@
 .todo-form-wrapper {
+	max-width: 42rem;
+	width: 100%;
+	margin: 0 0 1rem;
 }
 .todo-form {
 }
 .todo-input {
+	flex: 1;
+	height: 4rem;
+	padding: 0 1rem;
+	border: 0;
+	outline: none;
 }
 .add-todo-btn {
+	background-color: var(--todo-form-btn-clr);
+	outline: none;
+	border: none;
+	color: var(--white-clr);
+	padding: 0 1rem;
+	cursor: pointer;
+	line-height: 4rem;
+}
+.add-todo-btn:hover {
+	background-color: var(--todo-form-hover-btn-clr);
 }
