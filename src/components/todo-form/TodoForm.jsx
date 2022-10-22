@@ -4,15 +4,17 @@ import { v4 } from 'uuid'
 /* styles */
 import './TodoForm.css'
 
-export const TodoForm = () => {
+export const TodoForm = ({ addTodos }) => {
 	const [todoVal, setTodoVal] = useState('')
 
 	const handleSubmitEvent = evt => {
 		evt.preventDefault()
 		const toDo = {
 			id: v4(),
-			todoText: todoVal
+			todoText: todoVal.trim()
 		}
+		addTodos(toDo)
+		setTodoVal('')
 	}
 
 	const handleInputChange = evt => {
@@ -31,6 +33,8 @@ export const TodoForm = () => {
 					className='todo-input'
 					onChange={handleInputChange}
 					placeholder='Enter Todo Here...'
+					value={todoVal}
+					required
 				/>
 				<input
 					className='add-todo-btn'
