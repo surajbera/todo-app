@@ -27,10 +27,17 @@ function App() {
 				}
 			}
 			setTodos(newTodos)
+			setTodoToBeEdited(null)
+			toast.info('Todo Edited')
 			return
 		}
+
 		const todoExists = todos.find(todo => todo.todoText.toLowerCase() === newTodoItem.todoText.toLowerCase())
-		if (!todoExists) setTodos(prevTodos => [newTodoItem, ...prevTodos])
+
+		if (!todoExists) {
+			setTodos(prevTodos => [newTodoItem, ...prevTodos])
+			toast.success('Todo Added')
+		}
 		if (todoExists) toast.error('Todo already added')
 	}
 
@@ -41,6 +48,7 @@ function App() {
 	const todoToDelete = todo => {
 		const updatedTodos = todos.filter(todoItem => todoItem.id !== todo.id)
 		setTodos(updatedTodos)
+		toast.success('Todo Deleted')
 	}
 
 	return (
