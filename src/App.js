@@ -21,11 +21,11 @@ function App() {
 	const addTodos = newTodoItem => {
 		if (todoToBeEdited) {
 			const newTodos = [...todos]
-			for (const key in newTodos) {
-				if (newTodos[key].id === newTodoItem.id) {
-					newTodos[key].todoText = newTodoItem.todoText
+			newTodos.forEach(el => {
+				if (el.id === newTodoItem.id) {
+					el.todoText = newTodoItem.todoText
 				}
-			}
+			})
 			setTodos(newTodos)
 			setTodoToBeEdited(null)
 			toast.info('Todo Edited')
