@@ -48,6 +48,7 @@ function App() {
 	const todoToDelete = todo => {
 		const updatedTodos = todos.filter(todoItem => todoItem.id !== todo.id)
 		setTodos(updatedTodos)
+		setTodoToBeEdited(null)
 		toast.success('Todo Deleted')
 	}
 

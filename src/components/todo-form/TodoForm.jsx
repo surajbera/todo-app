@@ -14,6 +14,8 @@ export const TodoForm = ({ addTodos, todoToBeEdited }) => {
 			setTodoVal(todoToBeEdited.todoText)
 			inputRef.current.focus()
 			setEditingState(true)
+		} else {
+			setEditingState(false)
 		}
 	}, [todoToBeEdited])
 
