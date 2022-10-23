@@ -6,10 +6,6 @@ import { ToastContainer } from 'react-toastify'
 import { TodoForm } from './components/todo-form/TodoForm'
 import { TodoList } from './components/todo-list/TodoList'
 
-/* styles */
-import 'react-toastify/dist/ReactToastify.css'
-import './style.css'
-
 function App() {
 	const [todos, setTodos] = useState([])
 	const [todoToBeEdited, setTodoToBeEdited] = useState(null)
