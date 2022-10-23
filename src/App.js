@@ -48,12 +48,13 @@ function App() {
 	const todoToDelete = todo => {
 		const updatedTodos = todos.filter(todoItem => todoItem.id !== todo.id)
 		setTodos(updatedTodos)
-		setTodoToBeEdited(null)
+		if (todoToBeEdited) setTodoToBeEdited(null)
 		toast.success('Todo Deleted')
 	}
 
 	return (
 		<div className='App flex-wrapper'>
+			<h1 className='app-heading'>Todo App</h1>
 			<div className='todo-wrapper'>
 				<TodoForm
 					addTodos={addTodos}
