@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { ToastContainer } from 'react-toastify'
 
@@ -14,13 +14,24 @@ function App() {
 	const [todos, setTodos] = useState([])
 	const [todoToBeEdited, setTodoToBeEdited] = useState(null)
 
+	useEffect(() => {
+		console.log(todos)
+	}, [todos])
+
 	const addTodos = newTodoItem => {
-		const index = todos.findIndex(item => item.todoText.toLowerCase() === newTodoItem.todoText.toLowerCase())
-		if (index === -1) {
-			setTodos(prevTodos => [newTodoItem, ...prevTodos])
-		} else {
-			toast.error('Todo already added')
+		if (todoToBeEdited) {
+			const newTodos = [...todos]
+			for (const key in newTodos) {
+				if (newTodos[key].id === newTodoItem.id) {
+					newTodos[key].todoText = newTodoItem.todoText
+				}
+			}
+			setTodos(newTodos)
+			return
 		}
+		const todoExists = todos.find(todo => todo.todoText.toLowerCase() === newTodoItem.todoText.toLowerCase())
+		if (!todoExists) setTodos(prevTodos => [newTodoItem, ...prevTodos])
+		if (todoExists) toast.error('Todo already added')
 	}
 
 	const todoToEdit = todo => {

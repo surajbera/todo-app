@@ -6,23 +6,26 @@ import './TodoForm.css'
 
 export const TodoForm = ({ addTodos, todoToBeEdited }) => {
 	const [todoVal, setTodoVal] = useState('')
+	const [editingState, setEditingState] = useState(false)
 	const inputRef = useRef()
 
 	useEffect(() => {
 		if (todoToBeEdited) {
 			setTodoVal(todoToBeEdited.todoText)
 			inputRef.current.focus()
+			setEditingState(true)
 		}
 	}, [todoToBeEdited])
 
 	const handleSubmitEvent = evt => {
 		evt.preventDefault()
-		const toDo = {
-			id: v4(),
+		const todo = {
+			id: editingState ? todoToBeEdited.id : v4(),
 			todoText: todoVal.trim()
 		}
-		addTodos(toDo)
 		setTodoVal('')
+		if (editingState) setEditingState(false)
+		addTodos(todo)
 	}
 
 	const handleInputChange = evt => {
@@ -49,7 +52,7 @@ export const TodoForm = ({ addTodos, todoToBeEdited }) => {
 				<input
 					className='add-todo-btn'
 					type='submit'
-					value='Add Todo'
+					value={editingState ? 'Edit Todo' : 'Add Todo'}
 				/>
 			</form>
 		</div>
