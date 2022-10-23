@@ -35,6 +35,7 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	padding: 0 1.3rem;
 }
 .todo-wrapper {
 	height: 50rem;
@@ -42,4 +43,9 @@ body {
 }
 .app-heading {
 	font-size: 2.5rem;
+}
+.secondary-heading {
+	font-size: 2rem;
+	text-align: center;
+	margin: 1.5rem 0;
 }

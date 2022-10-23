@@ -15,8 +15,9 @@ function App() {
 	const [todoToBeEdited, setTodoToBeEdited] = useState(null)
 
 	useEffect(() => {
-		console.log(todos)
-	}, [todos])
+		const savedTodos = JSON.parse(localStorage.getItem('todos'))
+		if (savedTodos && savedTodos.length) setTodos(savedTodos)
+	}, [])
 
 	const addTodos = newTodoItem => {
 		if (todoToBeEdited) {
@@ -29,14 +30,16 @@ function App() {
 			setTodos(newTodos)
 			setTodoToBeEdited(null)
 			toast.info('Todo Edited')
+			localStorage.setItem('todos', JSON.stringify(newTodos))
 			return
 		}
 
 		const todoExists = todos.find(todo => todo.todoText.toLowerCase() === newTodoItem.todoText.toLowerCase())
-
 		if (!todoExists) {
-			setTodos(prevTodos => [newTodoItem, ...prevTodos])
+			const updatedTodos = [newTodoItem, ...todos]
+			setTodos(updatedTodos)
 			toast.success('Todo Added')
+			localStorage.setItem('todos', JSON.stringify(updatedTodos))
 		}
 		if (todoExists) toast.error('Todo already added')
 	}
@@ -48,6 +51,7 @@ function App() {
 	const todoToDelete = todo => {
 		const updatedTodos = todos.filter(todoItem => todoItem.id !== todo.id)
 		setTodos(updatedTodos)
+		localStorage.setItem('todos', JSON.stringify(updatedTodos))
 		if (todoToBeEdited) setTodoToBeEdited(null)
 		toast.success('Todo Deleted')
 	}
@@ -60,11 +64,14 @@ function App() {
 					addTodos={addTodos}
 					todoToBeEdited={todoToBeEdited}
 				/>
-				<TodoList
-					todos={todos}
-					todoToEdit={todoToEdit}
-					todoToDelete={todoToDelete}
-				/>
+				{todos && (
+					<TodoList
+						todos={todos}
+						todoToEdit={todoToEdit}
+						todoToDelete={todoToDelete}
+					/>
+				)}
+				{todos.length === 0 && <h2 className='secondary-heading'>Add some todos!!</h2>}
 				<ToastContainer
 					autoClose={1300}
 					closeOnClick
