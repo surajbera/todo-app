@@ -1,9 +1,6 @@
 .todo-form-wrapper {
-	max-width: 42rem;
 	width: 100%;
 	margin: 0 0 1rem;
-}
-.todo-form {
 }
 .todo-input {
 	flex: 1;

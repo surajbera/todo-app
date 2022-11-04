@@ -40,6 +40,8 @@ body {
 .todo-wrapper {
 	height: 50rem;
 	overflow: auto;
+	min-width: 42rem;
+	max-width: 100%;
 }
 .app-heading {
 	font-size: 2.5rem;
